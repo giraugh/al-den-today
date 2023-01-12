@@ -37,6 +37,10 @@ html, body {
   color: var(--col-body);
 }
 
+body {
+  overflow-x: hidden;
+}
+
 body.hide-cursor {
   cursor: none;
 }

@@ -26,6 +26,7 @@
     overflow: hidden;
     z-index: 100;
     inset: 0;
+    pointer-events: none;
   }
 
   .spoon-cursor {

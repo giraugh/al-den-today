@@ -6,8 +6,8 @@
 
   onMount(() => {
     document.addEventListener('mousemove', e => {
-      mouseX = e.pageX
-      mouseY = e.pageY
+      mouseX = e.clientX
+      mouseY = e.clientY
     })
     
     window.addEventListener('focus', () => {

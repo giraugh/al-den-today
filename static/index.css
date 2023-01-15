@@ -1,15 +1,13 @@
 :root {
   --col-background: #2B2B2B;
   --col-body: white;
-
   --col-table: #CD8C5C;
   --col-table-shadow: #BA7A4C;
-
   --col-burner: #4A4A4A;
   --col-burner-shadow: #333333;
-
   --col-burner-dial: #666666;
   --col-burner-dial-shadow: #5B5B5B;
+  --col-pasta: #F4DC9D;
 
   --grad-flame: linear-gradient(
     to bottom,

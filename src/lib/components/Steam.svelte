@@ -105,6 +105,7 @@
 
     // Setup mouse interactivity handler
     window.addEventListener('mousemove', e => {
+      if (!canvas) return
       let canvasBoundingBox = canvas.getBoundingClientRect()
       let [x, y] = [e.clientX - canvasBoundingBox.left, e.clientY - canvasBoundingBox.top]
       

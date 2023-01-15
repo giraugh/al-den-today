@@ -25,6 +25,8 @@
       flex-direction: column;
       align-items: center;
       gap: .5em;
+      max-width: 10em;
+      text-align: center;
     }
 
     p strong {

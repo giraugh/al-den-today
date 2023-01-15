@@ -1,5 +1,6 @@
 <script>
-	import Steam from './Steam.svelte';
+	import PastaNoodles from './PastaNoodles.svelte';
+import Steam from './Steam.svelte';
 
   export const potIsVisible = true
 </script>
@@ -138,12 +139,12 @@
     background: var(--grad-flame);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     min-height: 1.4em;
-    width: 1.1em;
+    width: 1.2em;
     transform: translateY(calc(calc(var(--y-off) * 1em) - .3em));
     animation: FlameFlicker .7s linear infinite;
     animation-delay: calc(var(--a-off) * -.5s);
     transform-origin: 50% 100%;
-    --anim-scale-mag: .6;
+    --anim-scale-mag: .8;
   }
 
   @keyframes FlameFlicker {
@@ -182,6 +183,36 @@
       transform: translate(50% 50%);
     }
   }
+
+  .pasta-noodle {
+    width: 10em;
+    height: 1em;
+    transform: rotate(60deg);
+    background: var(--col-pasta);
+  }
+
+  /* .bobbing-pasta {
+    display: flex;
+    gap: .5em;
+    padding-inline: 1em;
+  }
+
+  .pasta {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: var(--col-pasta);
+    animation: Bob 1s infinite linear;
+    animation-delay: calc(var(--a-off) * 1s);
+  } */
+
+  /* @keyframes Bob {
+    0% { transform: translateY(0%); }
+    25% { transform: translateY(-10%); }
+    50% { transform: translateY(10%); }
+    50% { transform: translateY(-10%); }
+    100% { transform: translateY(0%); }
+  }  */
 
   @media (max-width: 400px) {
     section {
@@ -245,6 +276,7 @@
         </svg>
         <div class="inside">
           <Steam />
+          <PastaNoodles />
         </div>
         <svg class="body" viewBox="0 0 694 492" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0V0C230.748 23.2743 463.252 23.2743 694 0V0V451.594C694 451.83 693.834 452.035 693.602 452.084L665.934 457.939C446.291 504.42 219.151 502.421 0.359211 452.083V452.083C0.148985 452.034 0 451.847 0 451.631V0Z" fill="url(#paint0_linear_7_207)"/>

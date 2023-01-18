@@ -34,6 +34,7 @@
     position: absolute;
     transform: translate(-43%, -43%) scale(.3);
     z-index: 100;
+    transition: opacity .1s;
 
     @media (hover: none) {
       display: none;

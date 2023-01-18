@@ -49,3 +49,8 @@ body {
 body.hide-cursor {
   cursor: none;
 }
+
+html:has(:is(a[href], button):hover) .spoon-cursor {
+  opacity: .3;
+  cursor: pointer !important;
+}

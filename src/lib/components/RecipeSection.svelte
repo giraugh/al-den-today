@@ -25,6 +25,9 @@
     [.3, .7, -60],
   ]
 
+  // Parallax effect
+  let scroll: number
+
   // Get a unique recipe from the day
   const day = dayjs(date).dayOfYear()
   const pasta = PASTA_LIST[day % PASTA_LIST.length]
@@ -56,9 +59,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-block: 10em;
+    padding-block: 13em;
     position: relative;
-    margin-block-start: 3em;
   }
 
   .parallax-items {
@@ -68,13 +70,17 @@
     margin: auto;
     overflow: hidden;
 
-    > img {
+    img {
       position: absolute;
       width: 8em;
 
       left: calc(var(--x) * 100%);
       top: calc(var(--y) * 100%);
       transform: rotate(calc(var(--r) * 1deg));
+
+      @media (prefers-reduced-motion) {
+        transform: none !important;
+      }
     }
 
     .penne {
@@ -190,24 +196,32 @@
   }
 </style>
 
+<svelte:window bind:scrollY={scroll}/>
+
 <section>
   <div class='parallax-items'>
-    {#each PENNE as [x, y, r]}
-      <img
-        class="penne"
-        src="/images/penne.svg"
-        alt="Penne pasta"
-        style="--x: {x}; --y: {y}; --r: {r};"
-      />
-    {/each}
-    {#each TOMATOES as [x, y, r]}
-      <img
-        class="tomato"
-        src="/images/tomato.svg"
-        alt="Round red tomato"
-        style="--x: {x}; --y: {y}; --r: {r};"
-      />
-    {/each}
+    <div class='penne-items' >
+      {#each PENNE as [x, y, r], i}
+        <img
+          class="penne"
+          src="/images/penne.svg"
+          alt="Penne pasta"
+          style="--x: {x}; --y: {y}; --r: {r};"
+          style:transform="translate3d(0, {(scroll - 500) / (4 + (i % 3))}px, 0)"
+        />
+      {/each}
+    </div>
+    <div class='tomato-items'>
+      {#each TOMATOES as [x, y, r]}
+        <img
+          class="tomato"
+          src="/images/tomato.svg"
+          alt="Round red tomato"
+          style="--x: {x}; --y: {y}; --r: {r};"
+          style:transform="translate3d(0, {(scroll - 500) / 8}px, 0)"
+        />
+      {/each}
+    </div>
   </div>
   <div class='content'>
     <h2>&dash; Today's Recipe Idea &dash;</h2>

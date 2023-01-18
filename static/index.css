@@ -3,11 +3,17 @@
   --col-body: white;
   --col-table: #CD8C5C;
   --col-table-shadow: #BA7A4C;
+  --col-table-text: #552c0d;
   --col-burner: #4A4A4A;
   --col-burner-shadow: #333333;
   --col-burner-dial: #666666;
   --col-burner-dial-shadow: #5B5B5B;
   --col-pasta: #F4DC9D;
+  --col-pasta-text: #65491e;
+  --col-surface: #F3F3F3; 
+  --col-text-dark: black;
+  --col-method: #94d4d4;
+  --col-method-text: #144242;
 
   --grad-flame: linear-gradient(
     to bottom,

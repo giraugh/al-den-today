@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+  let finishedCount = 0
   onMount(() => {
-    document.querySelectorAll('.pasta-noodles svg path').forEach(noodlePath => {
+    // Setup animation continuation event
+    document.querySelectorAll('.pasta-noodles svg path').forEach((noodlePath, _, noodles) => {
       noodlePath.addEventListener('animationend', () => {
-        noodlePath.classList.remove('baby')
-        noodlePath.classList.toggle('sink')
+        finishedCount += 1
+        if (finishedCount >= noodles.length) {
+          noodles.forEach(noodlePath => noodlePath.classList.toggle('sink'))
+          finishedCount = 0
+        }
       })
     })
   })
@@ -41,9 +46,10 @@
         }
       }
     }
-  
+
     &:global(.sink) {
       animation: sink 10s forwards linear;
+      animation-delay: 0s !important;
     }
   }
 

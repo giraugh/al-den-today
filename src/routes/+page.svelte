@@ -13,8 +13,8 @@
   let { holidayName, date } = data
 
   // Create reactive meta info
-  $: title = `${holidayName} is today`
-  $: description = `The pasta holiday for ${dayjs(date).format('DD MMMM YYYY')} is ${holidayName}`
+  $: title = `${holidayName}`
+  $: description = `${dayjs(date).format('DD MMMM YYYY')} is ${holidayName}`
 </script>
 
 <style lang="scss">

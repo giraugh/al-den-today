@@ -8,6 +8,7 @@
   p {
     text-align: center;
     max-width: 13em;
+    opacity: .75;
   }
 
   a {

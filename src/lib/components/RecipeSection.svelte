@@ -1,5 +1,6 @@
 <script lang="ts">
   import dayjs from 'dayjs'
+  import dayjsDayOfYear from 'dayjs/plugin/dayOfYear'
   import { TwitterIcon, Mail, FacebookIcon, LinkedinIcon, Share2 } from 'lucide-svelte'
 
   import { PASTA_LIST, OTHER_LIST, METHOD_LIST } from '$lib/data/recipes'
@@ -7,8 +8,25 @@
 
   export let date: Date
 
+  dayjs.extend(dayjsDayOfYear)
+
+  // Define decoration positions
+  const TOMATOES = [
+    [.08, .1, -15],
+    [.8, .5, 10],
+    [.1, .7, -150],
+  ]
+  const PENNE = [
+    [.3, .1, 30],
+    [.6, .03, -30],
+    [.8, .2, 40],
+    [.0, .6, 20],
+    [.7, .8, 0],
+    [.3, .7, -60],
+  ]
+
   // Get a unique recipe from the day
-  const day = date.getDay()
+  const day = dayjs(date).dayOfYear()
   const pasta = PASTA_LIST[day % PASTA_LIST.length]
   const other = OTHER_LIST[day % OTHER_LIST.length]
   const method = METHOD_LIST[day % METHOD_LIST.length]
@@ -21,7 +39,6 @@
     text: shareText,
     url,
   }
-
 
   // Determiner whether sharing w/ web share api is possible
   let canShare = false
@@ -40,6 +57,29 @@
     align-items: center;
     justify-content: center;
     padding-block: 10em;
+    position: relative;
+    margin-block-start: 3em;
+  }
+
+  .parallax-items {
+    position: absolute;
+    inset: 0em;
+    max-width: 50em;
+    margin: auto;
+    overflow: hidden;
+
+    > img {
+      position: absolute;
+      width: 8em;
+
+      left: calc(var(--x) * 100%);
+      top: calc(var(--y) * 100%);
+      transform: rotate(calc(var(--r) * 1deg));
+    }
+
+    .penne {
+      opacity: .8;
+    }
   }
 
   .content {
@@ -48,6 +88,7 @@
     min-height: 20em;
     width: min(60%, 30em);
     padding: 2em;
+    z-index: 1;
 
     h2, h3 {
       text-align: center;
@@ -55,6 +96,18 @@
     
     h2:first-of-type {
       margin-block-start: 0;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .tomato {
+      filter: contrast(.8);
+    }
+
+    .penne {
+      opacity: .4;
+      filter: contrast(.8);
+      width: 6em !important;
     }
   }
 
@@ -138,6 +191,24 @@
 </style>
 
 <section>
+  <div class='parallax-items'>
+    {#each PENNE as [x, y, r]}
+      <img
+        class="penne"
+        src="/images/penne.svg"
+        alt="Penne pasta"
+        style="--x: {x}; --y: {y}; --r: {r};"
+      />
+    {/each}
+    {#each TOMATOES as [x, y, r]}
+      <img
+        class="tomato"
+        src="/images/tomato.svg"
+        alt="Round red tomato"
+        style="--x: {x}; --y: {y}; --r: {r};"
+      />
+    {/each}
+  </div>
   <div class='content'>
     <h2>&dash; Today's Recipe Idea &dash;</h2>
     <div class='recipe-grid'>

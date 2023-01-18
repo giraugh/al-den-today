@@ -76,7 +76,7 @@
 
       left: calc(var(--x) * 100%);
       top: calc(var(--y) * 100%);
-      transform: rotate(calc(var(--r) * 1deg));
+      transform: rotate(calc(var(--r) * 1deg)) translateY(var(--oy));
 
       @media (prefers-reduced-motion) {
         transform: none !important;
@@ -206,8 +206,7 @@
           class="penne"
           src="/images/penne.svg"
           alt="Penne pasta"
-          style="--x: {x}; --y: {y}; --r: {r};"
-          style:transform="translate3d(0, {(scroll - 500) / (4 + (i % 3))}px, 0)"
+          style="--x: {x}; --y: {y}; --r: {r}; --oy: {(scroll - 500) / (4 + (i % 3))}px;"
         />
       {/each}
     </div>
@@ -217,8 +216,7 @@
           class="tomato"
           src="/images/tomato.svg"
           alt="Round red tomato"
-          style="--x: {x}; --y: {y}; --r: {r};"
-          style:transform="translate3d(0, {(scroll - 500) / 8}px, 0)"
+          style="--x: {x}; --y: {y}; --r: {r}; --oy: {(scroll - 500) / 8}px;"
         />
       {/each}
     </div>

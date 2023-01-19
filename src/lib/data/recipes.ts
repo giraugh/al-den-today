@@ -19,7 +19,6 @@ export const PASTA_LIST = [
   "Ravioli",
   "Tortellini",
   "Orzo",
-  "Barilla",
   "Shells",
   "Elbows",
   "Bowties",
@@ -28,8 +27,6 @@ export const PASTA_LIST = [
   "Orecchiette",
   "Rotelle",
   "Vermicelli",
-  "Wavy noodles",
-  "Pene rigate"
 ]
 
 export const OTHER_LIST = [
